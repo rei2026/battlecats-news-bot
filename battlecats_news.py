@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-import os
-
 WEBHOOK_URL = os.environ["WEBHOOK_URL"]
 NEWS_URL = "https://battlecats.club/news/"
 LAST_URL_FILE = "last_url.txt"
@@ -45,6 +43,7 @@ if latest_url == last_url:
     print("新しいニュースなし")
 else:
     message = {
+        "username": "battle cats newsbot",
         "content": f"🐱 にゃんこ大戦争ニュース\n\n{latest_title}\n{latest_url}"
     }
 
