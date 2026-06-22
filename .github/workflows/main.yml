@@ -27,3 +27,14 @@ jobs:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: |
           python battlecats_news.py
+          
+      - name: Commit last_url.txt
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add last_url.txt
+
+          git diff --cached --quiet || git commit -m "Update last_url.txt"
+
+          git push
